@@ -1,0 +1,6 @@
+body {
+  overflow-x: hidden !important; /* Disable scrolling for the whole page */
+  background-color: #f7f5f5;
+}
+
+
