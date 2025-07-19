@@ -14,7 +14,7 @@ function HomePage() {
       <MyWork />
       <MyTestimonials />
       <Footer />
-      <ScrollToTopButton />
+      <ScrollButton  />
     </>
   );
 }
