@@ -77,21 +77,29 @@ export const Letter = styled.h1`
   -webkit-text-fill-color: transparent;
   font-family: "Inter", sans-serif;
   position: absolute;
-  z-index: 2;
+  z-index: 0;
   right: 0%;
   font-weight: 800;
   font-size: 700px;
-  text-align: center; /* Center the letters together */
-
+  text-align: center;
+  
+  /* Prevent selection and copying */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  
+  /* Prevent cursor interaction */
+  pointer-events: none;
+  
   /* Clip the text to show only half of the second letter */
   overflow: hidden;
-  width: 1.7ch; /* Adjust this value to control how much of the second letter is shown */
+  width: 1.7ch;
   white-space: nowrap;
 
   @media (max-width: 768px) {
     font-weight: 600;
     font-size: 300px;
-    z-index: 0;
     right: -0%;
   }
 

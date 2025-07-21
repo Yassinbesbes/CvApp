@@ -21,7 +21,6 @@ export const StyledRow = styled.div`
   }
 `;
 
-
 export const StyledCol = styled.div`
   flex: 1;
   padding: 10px;
@@ -31,7 +30,6 @@ export const StyledCol = styled.div`
     width: 100%;
     max-width: 400px;
     text-align: center;
-    
   }
 
   // Existing classes
@@ -60,7 +58,6 @@ export const StyledCol = styled.div`
   }
 `;
 
-
 export const StyledColContent = styled(StyledCol)`
   display: flex;
   flex-direction: column;
@@ -86,7 +83,6 @@ export const SubTitle = styled.h6`
   font-size: 1.2rem;
   color: #666;
 `;
-
 
 export const Circle = styled.div`
   width: 400px;
@@ -189,7 +185,6 @@ export const LinkList = styled.ul`
   }
 `;
 
-
 export const NewsletterBox = styled.div`
   display: flex;
   margin-top: 15px;
@@ -229,5 +224,3 @@ export const Copyright = styled.div`
   font-size: 14px;
   margin-top: auto;
 `;
-
-
