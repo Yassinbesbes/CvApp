@@ -1,5 +1,5 @@
-import React from "react";
-import { sections } from "../../data/description.js"; // Import the data
+import React, { useState, useEffect } from "react";
+import { sections } from "../../data/description.js";
 import {
   StyledContainer,
   StyledRow,
@@ -8,17 +8,23 @@ import {
   SubTitle,
   Descrip,
   Button,
+  CVButton,
   Circle,
   Letter,
   StyledImage,
   StyledColContent,
-} from "./style.ts"; // Adjust based on your actual file structure
+} from "./style.ts";
 import { DescripImg } from "../../images/images.js";
 
 function Description() {
-  const handleLearnMore = () => {
-    console.log("Learn More clicked!");
-  };
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = showPopup ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showPopup]);
 
   return (
     <>
@@ -28,16 +34,89 @@ function Description() {
             <Title>{sections.title}</Title>
             <SubTitle>{sections.subtitle}</SubTitle>
             <Descrip>{sections.description}</Descrip>
-            <Button onClick={handleLearnMore}>View My Work</Button>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <Button>{sections.buttons.viewWork}</Button>
+              <CVButton onClick={() => setShowPopup(true)}>
+                {sections.buttons.cv}
+              </CVButton>
+            </div>
           </StyledCol>
           <StyledColContent className="content-section">
             <Circle>
               <StyledImage src={DescripImg} alt="Description" />
-              <Letter>YB</Letter>
+              <Letter>{sections.letter}</Letter>
             </Circle>
           </StyledColContent>
         </StyledRow>
       </StyledContainer>
+
+      {showPopup && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "2rem",
+              borderRadius: "10px",
+              maxWidth: "400px",
+              textAlign: "center",
+            }}
+          >
+            <h3>{sections.buttons.downloadConfirmTitle}</h3>
+            <p>{sections.buttons.downloadConfirmMessage}</p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "1rem",
+                marginTop: "1rem",
+              }}
+            >
+              <a
+                href={sections.cvPath}
+                download="YassinBesbes_CV.pdf"
+                onClick={() => setShowPopup(false)}
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#426bc4",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
+                {sections.buttons.yesDownload}
+              </a>
+              <button
+                onClick={() => setShowPopup(false)}
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#f0f0f0",
+                  color: "#333",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                }}
+              >
+                {sections.buttons.cancel}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -60,6 +60,9 @@ export const Card = styled.div`
   min-height: 250px;
   transition: all 0.3s ease;
   margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   ${(props) =>
     props.isSelected
@@ -77,11 +80,15 @@ export const Card = styled.div`
   }
 `;
 
-/* Other styles remain the same as before */
 export const Description = styled.p`
   text-align: justify;
   margin-bottom: 20px;
   color: #535353;
+  flex-grow: 1;
+`;
+
+export const CustomerInfo = styled.div`
+  margin-top: auto;
 `;
 
 export const Title = styled.h1`
@@ -95,7 +102,7 @@ export const Title = styled.h1`
 
 export const CustomerName = styled.h6`
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   color: #000;
   font-weight: 600;
 `;
@@ -108,6 +115,7 @@ export const SubTitle = styled.h6`
 export const CustomerPosition = styled.h5`
   text-align: center;
   color: #777;
+  margin: 0;
 `;
 
 export const RadioContainer = styled.div`
@@ -150,6 +158,15 @@ export const Letter = styled.h1`
   overflow: hidden;
   width: 1.7ch;
   white-space: nowrap;
+  
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  
+  /* Prevent pointer events */
+  pointer-events: none;
 
   @media (max-width: 768px) {
     font-weight: 600;

@@ -64,11 +64,29 @@ export const Button = styled.button`
     z-index: 3; /* Layer above the circle and letter */
   }
 `;
+
+export const CVButton = styled.button`
+  background-color: white;
+  color: #426bc4;
+  padding: 16px 28px;
+  border: 1px solid #426bc4;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 0 12px 4px #426bc4;
+    transform: scale(1.03);
+  }
+`;
+
 export const StyledColContent = styled(StyledCol)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  // Add any additional letter styles here if needed
 `;
 
 export const Letter = styled.h1`
@@ -82,16 +100,16 @@ export const Letter = styled.h1`
   font-weight: 800;
   font-size: 700px;
   text-align: center;
-  
+
   /* Prevent selection and copying */
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  
+
   /* Prevent cursor interaction */
   pointer-events: none;
-  
+
   /* Clip the text to show only half of the second letter */
   overflow: hidden;
   width: 1.7ch;
