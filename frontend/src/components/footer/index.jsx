@@ -124,7 +124,7 @@ function Footer() {
       </FooterSection>
 
       <Copyright>
-        <p>© {new Date().getFullYear()} All rights reserved.</p>
+        <p>© {new Date().getFullYear()} {footer.copyright} </p>
       </Copyright>
     </StyledContainer>
   );

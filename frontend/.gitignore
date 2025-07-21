@@ -4,7 +4,13 @@
 /node_modules
 /.pnp
 .pnp.js
+
+# Ignore the specific PDF
+/public/YassinBesbes_CV.pdf
+
+# Ignore the entire data directory
 /src/data/
+
 
 # testing
 /coverage

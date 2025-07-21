@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { sections } from "../../data/my-testimonials.js";
+import { testimonialData } from "../../data/my-testimonials.js";
 import {
   StyledContainer,
   StyledRow,
@@ -17,13 +17,14 @@ import {
   NavigationButton,
   ArrowIcon,
   CarouselWrapper,
+  CustomerInfo,
 } from "./style.ts";
 
 function MyTestimonials() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const rowRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const totalItems = Object.values(sections).length;
+  const sections = testimonialData.sections;
 
   const handleRadioChange = (index) => {
     setSelectedIndex(index);
@@ -31,27 +32,20 @@ function MyTestimonials() {
   };
 
   const scrollToCard = (index) => {
-    if (cardRefs.current[index] && rowRef.current) {
-      const card = cardRefs.current[index];
-      const container = rowRef.current;
-      const cardWidth = card.offsetWidth;
-      const containerWidth = container.offsetWidth;
-      const scrollLeft = card.offsetLeft - (containerWidth - cardWidth) / 2;
-
-      container.scrollTo({
-        left: scrollLeft,
-        behavior: "smooth",
-      });
+    const card = cardRefs.current[index];
+    const container = rowRef.current;
+    if (card && container) {
+      const scrollLeft = card.offsetLeft - (container.offsetWidth - card.offsetWidth) / 2;
+      container.scrollTo({ left: scrollLeft, behavior: "smooth" });
     }
   };
 
   const handleNavigation = (direction) => {
-    let newIndex;
-    if (direction === "prev") {
-      newIndex = (selectedIndex - 1 + totalItems) % totalItems;
-    } else {
-      newIndex = (selectedIndex + 1) % totalItems;
-    }
+    const totalItems = sections.length;
+    const newIndex =
+      direction === "prev"
+        ? (selectedIndex - 1 + totalItems) % totalItems
+        : (selectedIndex + 1) % totalItems;
 
     setSelectedIndex(newIndex);
     scrollToCard(newIndex);
@@ -68,47 +62,40 @@ function MyTestimonials() {
 
   return (
     <StyledContainer>
-      <Title>My Testimonials</Title>
-      <Letter>T</Letter>
-
-      <SubTitle>
-        I'm happy that you like my work and wish to share the feedback
-      </SubTitle>
+      <Title>{testimonialData.title}</Title>
+      <Letter>{testimonialData.letter}</Letter>
+      <SubTitle>{testimonialData.subtitle}</SubTitle>
 
       <CarouselWrapper>
-        <NavigationButton
-          direction="prev"
-          onClick={() => handleNavigation("prev")}
-        >
+        <NavigationButton direction="prev" onClick={() => handleNavigation("prev")}>
           <ArrowIcon direction="prev" />
         </NavigationButton>
 
         <StyledRow ref={rowRef}>
-          {Object.values(sections).map((section, index) => (
+          {sections.map((section, index) => (
             <StyledCol key={index} ref={(el) => (cardRefs.current[index] = el)}>
               <Card
                 isSelected={selectedIndex === index}
                 onClick={() => handleCardClick(index)}
-                style={{ cursor: "pointer" }} // Add pointer cursor to indicate clickable
+                style={{ cursor: "pointer" }}
               >
                 <Description>{section.description}</Description>
-                <CustomerName>{section.Name}</CustomerName>
-                <CustomerPosition>{section.Position}</CustomerPosition>
+                <CustomerInfo>
+                  <CustomerName>{section.Name}</CustomerName>
+                  <CustomerPosition>{section.Position}</CustomerPosition>
+                </CustomerInfo>
               </Card>
             </StyledCol>
           ))}
         </StyledRow>
 
-        <NavigationButton
-          direction="next"
-          onClick={() => handleNavigation("next")}
-        >
+        <NavigationButton direction="next" onClick={() => handleNavigation("next")}>
           <ArrowIcon direction="next" />
         </NavigationButton>
       </CarouselWrapper>
 
       <RadioContainer>
-        {Object.values(sections).map((_, index) => (
+        {sections.map((_, index) => (
           <RadioLabel key={index}>
             <RadioButton
               type="radio"

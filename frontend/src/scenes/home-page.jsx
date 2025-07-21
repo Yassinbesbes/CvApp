@@ -1,20 +1,30 @@
 import React from "react";
+import Topbar from "../components/top-bar/index.jsx";
 import Description from "../components/description/index.tsx";
 import About from "../components/about/index.tsx";
 import MyWork from "../components/my-work/index.tsx";
 import MyTestimonials from "../components/my-testimonials/index.tsx";
 import Footer from "../components/footer/index.jsx";
-import ScrollToTopButton from "../helpers/scroll-button.jsx";
+import ScrollButton from "../helpers/scroll-button.jsx";
 
 function HomePage() {
   return (
     <>
-      <Description />
-      <About />
-      <MyWork />
+      <Topbar />
+      <section id="home">
+        <Description />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="work">
+        <MyWork />
+      </section>
       <MyTestimonials />
-      <Footer />
-      <ScrollButton  />
+      <section id="contact">
+        <Footer />
+      </section>
+      <ScrollButton />
     </>
   );
 }
