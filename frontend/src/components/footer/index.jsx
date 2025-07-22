@@ -9,6 +9,13 @@ import {
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { DescripImg } from "../../images/images.js";
 import { footer } from "../../data/footer.js";
+import { SeekMake, TT, UIB, DG } from "../../images/images.js";
+import {
+  CompaniesSection,
+  CompaniesTitle,
+  CompaniesWrapper,
+  CompanyLogo,
+} from "./style.ts";
 
 import {
   StyledContainer,
@@ -50,6 +57,33 @@ function Footer() {
           </Circle>
         </StyledColContent>
       </StyledRow>
+
+      {/* Companies I Worked With */}
+      <CompaniesSection>
+        <CompaniesTitle>Companies I've Worked At</CompaniesTitle>
+        <CompaniesWrapper>
+          <CompanyLogo
+            src={TT}
+            alt="Tunisie Telecom"
+            title="Tunisie Telecom – National telecom operator in Tunisia"
+          />
+          <CompanyLogo
+            src={SeekMake}
+            alt="SeekMake"
+            title="SeekMake – Digital manufacturing platform for prototyping and production"
+          />
+          <CompanyLogo
+            src={UIB}
+            alt="UIB"
+            title="UIB – Union Internationale de Banques, part of Société Générale Group"
+          />
+          <CompanyLogo
+            src={DG}
+            alt="DigiGrowing"
+            title="DigiGrowing – IT Services & Consulting"
+          />
+        </CompaniesWrapper>
+      </CompaniesSection>
 
       <FooterSection>
         <StyledRow>
@@ -124,7 +158,7 @@ function Footer() {
       </FooterSection>
 
       <Copyright>
-        <p>© {new Date().getFullYear()} {footer.copyright} </p>
+        <p>© {new Date().getFullYear()} All rights reserved.</p>
       </Copyright>
     </StyledContainer>
   );

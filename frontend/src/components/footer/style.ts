@@ -217,10 +217,44 @@ export const NewsletterButton = styled.button`
 `;
 
 export const Copyright = styled.div`
-  background-color: #f8f9fa;
   padding: 20px 0;
   text-align: center;
   color: #999;
   font-size: 14px;
   margin-top: auto;
+`;
+
+export const CompaniesSection = styled.div`
+  padding: 40px 0;
+  text-align: center;
+  background-color: #f4f6fa;
+`;
+
+export const CompaniesTitle = styled.h3`
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+`;
+
+export const CompaniesWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+export const CompanyLogo = styled.img`
+  height: 50px;
+  max-width: 150px;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(100%);
+  opacity: 0.7;
+
+  &:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+    opacity: 1;
+  }
 `;
