@@ -1,24 +1,28 @@
 {
   "files": {
     "main.css": "/CvApp/static/css/main.7450e9db.css",
-    "main.js": "/CvApp/static/js/main.fb8be366.js",
+    "main.js": "/CvApp/static/js/main.e30e40c2.js",
     "static/media/DonationApp.png": "/CvApp/static/media/DonationApp.b9075f18752da814feef.png",
     "static/media/Dashboard.png": "/CvApp/static/media/Dashboard.af4f4809e62153c1eb11.png",
     "static/media/DescripImg.png": "/CvApp/static/media/DescripImg.fb724aa694d96ba8456f.png",
     "static/media/FruitVeg.png": "/CvApp/static/media/FruitVeg.7e59ba1509c16d5f772e.png",
     "static/media/bootstrap-icons.woff?": "/CvApp/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
+    "static/media/tunisie_telecom.png": "/CvApp/static/media/tunisie_telecom.e3415587487bc567044f.png",
     "static/media/bootstrap-icons.woff2?": "/CvApp/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
+    "static/media/SeekMake.png": "/CvApp/static/media/SeekMake.3f5d1ca869816645a63f.png",
     "static/media/SpeedConnection.png": "/CvApp/static/media/SpeedConnection.d5006ca11dd88ed5e3e5.png",
+    "static/media/DigiGrowing.png": "/CvApp/static/media/DigiGrowing.72e2aec066535c50c700.png",
+    "static/media/UIB.png": "/CvApp/static/media/UIB.33323e2f3c82e6c5b33b.png",
     "static/media/twitter.png": "/CvApp/static/media/twitter.e4f83bef4191a65e9c7d.png",
     "static/media/github.png": "/CvApp/static/media/github.44eee0c4a6c25b0d7347.png",
     "static/media/figma.png": "/CvApp/static/media/figma.72fbc535ebe253a5dbc4.png",
     "static/media/linkedIn.png": "/CvApp/static/media/linkedIn.f249b38224ca41a0b909.png",
     "index.html": "/CvApp/index.html",
     "main.7450e9db.css.map": "/CvApp/static/css/main.7450e9db.css.map",
-    "main.fb8be366.js.map": "/CvApp/static/js/main.fb8be366.js.map"
+    "main.e30e40c2.js.map": "/CvApp/static/js/main.e30e40c2.js.map"
   },
   "entrypoints": [
     "static/css/main.7450e9db.css",
-    "static/js/main.fb8be366.js"
+    "static/js/main.e30e40c2.js"
   ]
 }
