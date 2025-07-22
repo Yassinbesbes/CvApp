@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CvApp/static/css/main.7450e9db.css",
-    "main.js": "/CvApp/static/js/main.918e2b8a.js",
+    "main.js": "/CvApp/static/js/main.fb8be366.js",
     "static/media/DonationApp.png": "/CvApp/static/media/DonationApp.b9075f18752da814feef.png",
     "static/media/Dashboard.png": "/CvApp/static/media/Dashboard.af4f4809e62153c1eb11.png",
     "static/media/DescripImg.png": "/CvApp/static/media/DescripImg.fb724aa694d96ba8456f.png",
@@ -15,10 +15,10 @@
     "static/media/linkedIn.png": "/CvApp/static/media/linkedIn.f249b38224ca41a0b909.png",
     "index.html": "/CvApp/index.html",
     "main.7450e9db.css.map": "/CvApp/static/css/main.7450e9db.css.map",
-    "main.918e2b8a.js.map": "/CvApp/static/js/main.918e2b8a.js.map"
+    "main.fb8be366.js.map": "/CvApp/static/js/main.fb8be366.js.map"
   },
   "entrypoints": [
     "static/css/main.7450e9db.css",
-    "static/js/main.918e2b8a.js"
+    "static/js/main.fb8be366.js"
   ]
 }
