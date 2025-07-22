@@ -35,16 +35,16 @@ function Description() {
             <SubTitle>{sections.subtitle}</SubTitle>
             <Descrip>{sections.description}</Descrip>
             <div style={{ display: "flex", gap: "10px" }}>
-              <Button>{sections.buttons.viewWork}</Button>
+              <Button>View My Work</Button>
               <CVButton onClick={() => setShowPopup(true)}>
-                {sections.buttons.cv}
+                cv
               </CVButton>
             </div>
           </StyledCol>
           <StyledColContent className="content-section">
             <Circle>
               <StyledImage src={DescripImg} alt="Description" />
-              <Letter>{sections.letter}</Letter>
+              <Letter>YB</Letter>
             </Circle>
           </StyledColContent>
         </StyledRow>

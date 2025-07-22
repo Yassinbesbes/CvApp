@@ -1,9 +1,20 @@
 import styled from "styled-components";
+import { Link as ScrollLink } from "react-scroll";
 
 export const StyledContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+`;
+
+export const StyledScrollLink = styled(ScrollLink)`
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: #426bc4;
+  }
 `;
 
 export const LeftButtons = styled.div`

@@ -1,4 +1,3 @@
-// src/components/topbar/Topbar.jsx
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,8 +5,12 @@ import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import { Logo } from "../../images/images.js";
 
-import { StyledContainer, LeftButtons, Button } from "./style.ts";
-import { Link as ScrollLink } from "react-scroll";
+import {
+  StyledContainer,
+  LeftButtons,
+  Button,
+  StyledScrollLink,
+} from "./style.ts";
 
 const Topbar = () => {
   return (
@@ -15,7 +18,7 @@ const Topbar = () => {
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand>
-            <ScrollLink to="home" smooth={true} duration={500}>
+            <StyledScrollLink to="home" smooth={true} duration={500}>
               <Image
                 src={Logo}
                 width="40"
@@ -23,21 +26,41 @@ const Topbar = () => {
                 className="d-inline-block align-top"
                 alt="Logo_YB"
               />
-            </ScrollLink>
+            </StyledScrollLink>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={ScrollLink} to="about" smooth={true} duration={500}>
+              <Nav.Link
+                as={StyledScrollLink}
+                to="about"
+                smooth={true}
+                duration={500}
+              >
                 About
               </Nav.Link>
-              <Nav.Link as={ScrollLink} to="myskills" smooth={true} duration={500}>
+              <Nav.Link
+                as={StyledScrollLink}
+                to="myskills"
+                smooth={true}
+                duration={500}
+              >
                 My Skills
               </Nav.Link>
-              <Nav.Link as={ScrollLink} to="work" smooth={true} duration={500}>
+              <Nav.Link
+                as={StyledScrollLink}
+                to="work"
+                smooth={true}
+                duration={500}
+              >
                 Work
               </Nav.Link>
-              <Nav.Link as={ScrollLink} to="contact" smooth={true} duration={500}>
+              <Nav.Link
+                as={StyledScrollLink}
+                to="contact"
+                smooth={true}
+                duration={500}
+              >
                 Contact
               </Nav.Link>
             </Nav>

@@ -24,7 +24,8 @@ function MyTestimonials() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const rowRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const sections = testimonialData.sections;
+  const sections = testimonialData;
+
 
   const handleRadioChange = (index) => {
     setSelectedIndex(index);
@@ -62,9 +63,9 @@ function MyTestimonials() {
 
   return (
     <StyledContainer>
-      <Title>{testimonialData.title}</Title>
-      <Letter>{testimonialData.letter}</Letter>
-      <SubTitle>{testimonialData.subtitle}</SubTitle>
+      <Title>My Testimonials</Title>
+      <Letter>T</Letter>
+      <SubTitle>I'm happy that you like my work and wish to share the feedback</SubTitle>
 
       <CarouselWrapper>
         <NavigationButton direction="prev" onClick={() => handleNavigation("prev")}>
