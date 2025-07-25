@@ -60,7 +60,7 @@ function Footer() {
 
       {/* Companies I Worked With */}
       <CompaniesSection>
-        <CompaniesTitle>Companies I've Worked At</CompaniesTitle>
+        <CompaniesTitle>Companies Part Of</CompaniesTitle>
         <CompaniesWrapper>
           <CompanyLogo
             src={TT}

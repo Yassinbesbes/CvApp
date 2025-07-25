@@ -7,6 +7,7 @@ export const StyledContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: 50px;
 `;
 
 export const StyledRow = styled.div`
@@ -65,14 +66,15 @@ export const StyledColContent = styled(StyledCol)`
   justify-content: center;
 `;
 
-// Titles
 export const Title = styled.h1`
   text-align: left;
+  white-space: nowrap;
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 2.5rem;
   background: linear-gradient(90deg, #6c6eb3 0%, #426bc4 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
@@ -223,17 +225,31 @@ export const Copyright = styled.div`
   font-size: 14px;
   margin-top: auto;
 `;
-
 export const CompaniesSection = styled.div`
-  padding: 40px 0;
+  padding: 80px 0;
   text-align: center;
   background-color: #f4f6fa;
+  position: relative;
+  overflow: hidden;
 `;
 
 export const CompaniesTitle = styled.h3`
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 7rem;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.03);
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  z-index: 1;
+  font-weight: 900;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    font-size: 4rem;
+  }
 `;
 
 export const CompaniesWrapper = styled.div`
@@ -242,6 +258,8 @@ export const CompaniesWrapper = styled.div`
   gap: 30px;
   flex-wrap: wrap;
   align-items: center;
+  position: relative;
+  z-index: 2;
 `;
 
 export const CompanyLogo = styled.img`

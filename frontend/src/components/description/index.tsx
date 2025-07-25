@@ -85,7 +85,7 @@ function Description() {
               }}
             >
               <a
-                href={sections.cvPath}
+                href="../../../public/YassinBesbes_CV.pdf"
                 download="YassinBesbes_CV.pdf"
                 onClick={() => setShowPopup(false)}
                 style={{
