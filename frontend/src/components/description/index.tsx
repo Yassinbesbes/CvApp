@@ -36,15 +36,14 @@ function Description() {
             <Descrip>{sections.description}</Descrip>
             <div style={{ display: "flex", gap: "10px" }}>
               <Button>View My Work</Button>
-              <CVButton onClick={() => setShowPopup(true)}>
-                cv
-              </CVButton>
+              <CVButton onClick={() => setShowPopup(true)}>cv</CVButton>
             </div>
           </StyledCol>
+
           <StyledColContent className="content-section">
             <Circle>
-              <StyledImage src={DescripImg} alt="Description" />
               <Letter>YB</Letter>
+              <StyledImage src={DescripImg} alt="Description" />
             </Circle>
           </StyledColContent>
         </StyledRow>
@@ -85,7 +84,7 @@ function Description() {
               }}
             >
               <a
-                href="../../../public/YassinBesbes_CV.pdf"
+                href="/YassinBesbes_CV.pdf"
                 download="YassinBesbes_CV.pdf"
                 onClick={() => setShowPopup(false)}
                 style={{

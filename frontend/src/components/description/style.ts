@@ -4,6 +4,7 @@ export const StyledContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  overflow-x: hidden;
 `;
 
 export const StyledRow = styled.div`
@@ -16,9 +17,10 @@ export const StyledRow = styled.div`
 export const StyledCol = styled.div`
   flex: ${(props) => (props.size ? props.size / 12 : 1)};
   padding: 10px;
-  .links-section {
+
+  &.links-section {
     position: relative;
-    z-index: 1;
+    z-index: 10; /* higher z-index to be above letter if needed */
   }
 `;
 
@@ -60,8 +62,8 @@ export const Button = styled.button`
   }
 
   @media (max-width: 662px) {
-    position: relative; /* Ensure it layers above the circle */
-    z-index: 3; /* Layer above the circle and letter */
+    position: relative;
+    z-index: 3;
   }
 `;
 
@@ -87,43 +89,7 @@ export const StyledColContent = styled(StyledCol)`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const Letter = styled.h1`
-  background: linear-gradient(180deg, #e9e9e9 0%, #fafaf7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: "Inter", sans-serif;
-  position: absolute;
-  z-index: 0;
-  right: 0%;
-  font-weight: 800;
-  font-size: 700px;
-  text-align: center;
-
-  /* Prevent selection and copying */
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-
-  /* Prevent cursor interaction */
-  pointer-events: none;
-
-  /* Clip the text to show only half of the second letter */
-  overflow: hidden;
-  width: 1.7ch;
-  white-space: nowrap;
-
-  @media (max-width: 768px) {
-    font-weight: 600;
-    font-size: 300px;
-    right: -0%;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    display: none;
-  }
+  position: relative; /* Important for Letter positioning */
 `;
 
 export const Circle = styled.div`
@@ -149,3 +115,38 @@ export const StyledImage = styled.img`
   position: relative;
   z-index: 3;
 `;
+
+export const Letter = styled.h1`
+  background: linear-gradient(180deg, #e9e9e9 0%, #fafaf7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Inter", sans-serif;
+  position: absolute;
+  top: 50%;
+  right: -150px; /* moves letter outside the circle */
+  transform: translateY(-50%);
+  z-index: 0;
+  font-weight: 800;
+  font-size: 700px;
+  text-align: center;
+
+  user-select: none;
+  pointer-events: none;
+  overflow: hidden;
+  width: 1.7ch;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-weight: 600;
+    font-size: 300px;
+    right: -70px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    display: none;
+  }
+`;
+
+
+
+

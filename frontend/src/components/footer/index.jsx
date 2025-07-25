@@ -7,27 +7,12 @@ import {
   faFigma,
 } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { DescripImg } from "../../images/images.js";
 import { footer } from "../../data/footer.js";
-import { SeekMake, TT, UIB, DG } from "../../images/images.js";
-import {
-  CompaniesSection,
-  CompaniesTitle,
-  CompaniesWrapper,
-  CompanyLogo,
-} from "./style.ts";
 
 import {
   StyledContainer,
   StyledRow,
   StyledCol,
-  Title,
-  SubTitle,
-  StyledImage,
-  CircleContact,
-  Circle,
-  StyledColContent,
-  CircleTitle,
   SocialIcons,
   FooterSection,
   LinkList,
@@ -38,53 +23,10 @@ import {
 } from "./style.ts";
 
 function Footer() {
-  const { contact, about, links, contactInfo, newsletter } = footer;
+  const { about, links, contactInfo, newsletter } = footer;
 
   return (
     <StyledContainer>
-      <StyledRow>
-        <StyledCol className="links-section">
-          <Title>{contact.title}</Title>
-          <SubTitle>{contact.subtitle}</SubTitle>
-          <CircleContact>
-            <CircleTitle>{contact.button}</CircleTitle>
-          </CircleContact>
-        </StyledCol>
-
-        <StyledColContent className="content-section">
-          <Circle>
-            <StyledImage src={DescripImg} alt="Description" />
-          </Circle>
-        </StyledColContent>
-      </StyledRow>
-
-      {/* Companies I Worked With */}
-      <CompaniesSection>
-        <CompaniesTitle>Companies Part Of</CompaniesTitle>
-        <CompaniesWrapper>
-          <CompanyLogo
-            src={TT}
-            alt="Tunisie Telecom"
-            title="Tunisie Telecom – National telecom operator in Tunisia"
-          />
-          <CompanyLogo
-            src={SeekMake}
-            alt="SeekMake"
-            title="SeekMake – Digital manufacturing platform for prototyping and production"
-          />
-          <CompanyLogo
-            src={UIB}
-            alt="UIB"
-            title="UIB – Union Internationale de Banques, part of Société Générale Group"
-          />
-          <CompanyLogo
-            src={DG}
-            alt="DigiGrowing"
-            title="DigiGrowing – IT Services & Consulting"
-          />
-        </CompaniesWrapper>
-      </CompaniesSection>
-
       <FooterSection>
         <StyledRow>
           <StyledCol>

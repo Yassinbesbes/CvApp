@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { sections } from "../../data/about.js"; // Import the data
+import { sections } from "../../data/about.js";
 import {
   StyledContainer,
   StyledRow,
@@ -40,14 +40,14 @@ function About() {
               {Object.keys(sections).map((key, index) => (
                 <li key={key}>
                   <a
-                    href="#"
+                    href={`/${key}`}
                     onClick={(e) => {
                       e.preventDefault();
                       setActiveSection(key);
                       setSelectedLink(key);
                     }}
                     className={selectedLink === key ? "active" : ""}
-                    data-index={formatNumber(index + 1)} // Add formatted index here
+                    data-index={formatNumber(index + 1)}
                   >
                     {`${formatNumber(index + 1)} ${sections[key].title}`}
                   </a>

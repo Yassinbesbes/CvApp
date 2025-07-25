@@ -4,6 +4,7 @@ import Description from "../components/description/index.tsx";
 import About from "../components/about/index.tsx";
 import MyWork from "../components/my-work/index.tsx";
 import MyTestimonials from "../components/my-testimonials/index.tsx";
+import Contact from "../components/contact/index.jsx";
 import Footer from "../components/footer/index.jsx";
 import ScrollButton from "../helpers/scroll-button.jsx";
 
@@ -21,7 +22,8 @@ function HomePage() {
         <MyWork />
       </section>
       <MyTestimonials />
-      <section id="contact">
+      <Contact />
+      <section id="footer">
         <Footer />
       </section>
       <ScrollButton />
