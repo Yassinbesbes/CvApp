@@ -10,7 +10,7 @@ export const StyledContainer = styled.div`
 export const StyledScrollLink = styled(ScrollLink)`
   cursor: pointer;
   text-decoration: none;
-  color: inherit;
+  color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
 
   &:hover {
     color: #426bc4;

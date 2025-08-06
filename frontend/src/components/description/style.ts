@@ -16,17 +16,16 @@ export const StyledRow = styled.div`
 export const StyledCol = styled.div`
   flex: ${(props) => (props.size ? props.size / 12 : 1)};
   padding: 10px;
-
-  &.links-section {
+  .links-section {
     position: relative;
-    z-index: 10; /* higher z-index to be above letter if needed */
+    z-index: 1;
   }
 `;
 
 export const Title = styled.h1`
   text-align: left;
   font-weight: 700;
-  color: black;
+  color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
 `;
 
 export const SubTitle = styled.h1`
@@ -42,7 +41,7 @@ export const SubTitle = styled.h1`
 export const Descrip = styled.p`
   text-align: justify;
   margin-bottom: 20px;
-  color: #535353;
+  color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
 `;
 
 export const Button = styled.button`
@@ -61,8 +60,8 @@ export const Button = styled.button`
   }
 
   @media (max-width: 662px) {
-    position: relative;
-    z-index: 3;
+    position: relative; /* Ensure it layers above the circle */
+    z-index: 3; /* Layer above the circle and letter */
   }
 `;
 
@@ -88,7 +87,43 @@ export const StyledColContent = styled(StyledCol)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; /* Important for Letter positioning */
+`;
+
+export const Letter = styled.h1`
+  background: linear-gradient(180deg, #e9e9e9 0%, #fafaf7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Inter", sans-serif;
+  position: absolute;
+  z-index: 0;
+  right: 0%;
+  font-weight: 800;
+  font-size: 700px;
+  text-align: center;
+
+  /* Prevent selection and copying */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  /* Prevent cursor interaction */
+  pointer-events: none;
+
+  /* Clip the text to show only half of the second letter */
+  overflow: hidden;
+  width: 1.7ch;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-weight: 600;
+    font-size: 300px;
+    right: -0%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const Circle = styled.div`
@@ -114,38 +149,3 @@ export const StyledImage = styled.img`
   position: relative;
   z-index: 3;
 `;
-
-export const Letter = styled.h1`
-  background: linear-gradient(180deg, #e9e9e9 0%, #fafaf7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: "Inter", sans-serif;
-  position: absolute;
-  top: 50%;
-  right: -150px; /* moves letter outside the circle */
-  transform: translateY(-50%);
-  z-index: 0;
-  font-weight: 800;
-  font-size: 700px;
-  text-align: center;
-
-  user-select: none;
-  pointer-events: none;
-  overflow: hidden;
-  width: 1.7ch;
-  white-space: nowrap;
-
-  @media (max-width: 768px) {
-    font-weight: 600;
-    font-size: 300px;
-    right: -70px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    display: none;
-  }
-`;
-
-
-
-

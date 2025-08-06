@@ -1,13 +1,28 @@
 import styled from "styled-components";
 
+interface ThemeProps {
+  theme: {
+    palette: {
+      mode: string;
+      background: {
+        default: string;
+        paper: string;
+      };
+      text: {
+        primary: string;
+        secondary: string;
+      };
+    };
+  };
+}
+
 // === Layout ===
-export const StyledContainer = styled.div`
+export const StyledContainer = styled.div<ThemeProps>`
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding-top: 50px;
-
 `;
 
 export const StyledRow = styled.div`
@@ -22,7 +37,7 @@ export const StyledRow = styled.div`
   }
 `;
 
-export const StyledCol = styled.div`
+export const StyledCol = styled.div<ThemeProps>`
   flex: 1;
   padding: 10px;
   min-width: 250px;
@@ -54,7 +69,7 @@ export const StyledColContent = styled(StyledCol)`
 `;
 
 // === Titles ===
-export const Title = styled.h1`
+export const Title = styled.h1<ThemeProps>`
   text-align: left;
   margin-bottom: 20px;
   font-weight: 700;
@@ -65,12 +80,12 @@ export const Title = styled.h1`
   -webkit-text-fill-color: transparent;
 `;
 
-export const SubTitle = styled.h6`
+export const SubTitle = styled.h6<ThemeProps>`
   text-align: left;
   margin-bottom: 50px;
   font-weight: 400;
   font-size: 1.2rem;
-  color: #666;
+  color: ${({ theme }) => theme.palette.text.secondary};
 `;
 
 export const CircleTitle = styled.h2`
@@ -116,18 +131,22 @@ export const StyledImage = styled.img`
 `;
 
 // === Companies Section ===
-export const CompaniesSection = styled.div`
+export const CompaniesSection = styled.div<ThemeProps>`
   padding: 80px 0;
   text-align: center;
-  background-color: #f4f6fa;
+  background-color: ${({ theme }) =>
+    theme.palette.mode === "dark" ? theme.palette.background.paper : "#f4f6fa"};
   position: relative;
   overflow: hidden;
 `;
 
-export const CompaniesTitle = styled.h3`
+export const CompaniesTitle = styled.h3<ThemeProps>`
   font-size: 7rem;
   margin: 0;
-  color: rgba(0, 0, 0, 0.03);
+  color: ${({ theme }) =>
+    theme.palette.mode === "dark"
+      ? "rgba(255, 255, 255, 0.05)"
+      : "rgba(0, 0, 0, 0.03)"};
   text-transform: uppercase;
   position: absolute;
   top: 50%;
@@ -153,13 +172,14 @@ export const CompaniesWrapper = styled.div`
   z-index: 2;
 `;
 
-export const CompanyLogo = styled.img`
+export const CompanyLogo = styled.img<ThemeProps>`
   height: 50px;
   max-width: 150px;
   object-fit: contain;
   transition: transform 0.3s ease, filter 0.3s ease;
-  filter: grayscale(100%);
-  opacity: 0.7;
+  filter: ${({ theme }) =>
+    theme.palette.mode === "dark" ? "none" : "grayscale(100%)"};
+  opacity: ${({ theme }) => (theme.palette.mode === "dark" ? "1" : "0.7")};
 
   &:hover {
     transform: scale(1.05);

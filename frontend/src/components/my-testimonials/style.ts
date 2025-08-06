@@ -1,10 +1,35 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled.div`
+interface ThemeProps {
+  theme: {
+    palette: {
+      mode: string;
+      background: {
+        default: string;
+        paper: string;
+      };
+      text: {
+        primary: string;
+        secondary: string;
+      };
+    };
+  };
+}
+
+interface CardProps {
+  isSelected?: boolean;
+}
+
+interface DirectionProps {
+  direction?: 'prev' | 'next';
+}
+
+export const StyledContainer = styled.div<ThemeProps>`
   margin: 0 auto;
   position: relative;
   max-width: 1200px;
   padding: 0 20px;
+  background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
 export const CarouselWrapper = styled.div`
@@ -51,8 +76,8 @@ export const StyledCol = styled.div`
   }
 `;
 
-export const Card = styled.div`
-  background: #fff;
+export const Card = styled.div<CardProps>`
+  background: ${({ theme }) => theme.palette.background.paper};
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -63,14 +88,13 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  ${(props) =>
-    props.isSelected
-      ? `border: 2px solid #9381ff; transform: scale(1.02);`
-      : `border: 2px solid transparent;`}
+  border: 2px solid ${({ isSelected }) => isSelected ? '#9381ff' : 'transparent'};
+  transform: ${({ isSelected }) => isSelected ? 'scale(1.02)' : 'scale(1)'};
+  cursor: pointer;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) ${({ isSelected }) => isSelected ? 'scale(1.02)' : ''};
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
   @media (max-width: 768px) {
@@ -80,10 +104,10 @@ export const Card = styled.div`
   }
 `;
 
-export const Description = styled.p`
+export const Description = styled.p<ThemeProps>`
   text-align: justify;
   margin-bottom: 20px;
-  color: #535353;
+  color: ${({ theme }) => theme.palette.text.secondary};
   flex-grow: 1;
 `;
 
@@ -100,21 +124,22 @@ export const Title = styled.h1`
   -webkit-text-fill-color: transparent;
 `;
 
-export const CustomerName = styled.h6`
+export const CustomerName = styled.h6<ThemeProps>`
   text-align: center;
   margin-bottom: 5px;
-  color: #000;
+  color: ${({ theme }) => theme.palette.text.primary};
   font-weight: 600;
 `;
 
-export const SubTitle = styled.h6`
+export const SubTitle = styled.h6<ThemeProps>`
   text-align: center;
   margin-bottom: 50px;
+  color: ${({ theme }) => theme.palette.text.secondary};
 `;
 
-export const CustomerPosition = styled.h5`
+export const CustomerPosition = styled.h5<ThemeProps>`
   text-align: center;
-  color: #777;
+  color: ${({ theme }) => theme.palette.text.secondary};
   margin: 0;
 `;
 
@@ -132,9 +157,14 @@ export const RadioButton = styled.input`
   border: 2px solid #9381ff;
   margin-right: 10px;
   cursor: pointer;
+  transition: all 0.2s ease;
 
   &:checked {
     background-color: #9381ff;
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -158,14 +188,7 @@ export const Letter = styled.h1`
   overflow: hidden;
   width: 1.7ch;
   white-space: nowrap;
-  
-  /* Prevent text selection */
   user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  
-  /* Prevent pointer events */
   pointer-events: none;
 
   @media (max-width: 768px) {
@@ -180,7 +203,7 @@ export const Letter = styled.h1`
   }
 `;
 
-export const NavigationButton = styled.button`
+export const NavigationButton = styled.button<DirectionProps>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -196,10 +219,15 @@ export const NavigationButton = styled.button`
   cursor: pointer;
   z-index: 1;
   ${props => props.direction === 'prev' ? 'left: -20px;' : 'right: -20px;'}
+  transition: all 0.2s ease;
   
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-50%) scale(1.1);
   }
 
   @media (max-width: 768px) {
@@ -209,7 +237,7 @@ export const NavigationButton = styled.button`
   }
 `;
 
-export const ArrowIcon = styled.span`
+export const ArrowIcon = styled.span<DirectionProps>`
   display: inline-block;
   width: 10px;
   height: 10px;

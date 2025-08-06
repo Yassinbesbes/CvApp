@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { sections } from "../../data/about.js";
+import { useTheme } from "@mui/material/styles";
+
 import {
   StyledContainer,
   StyledRow,
@@ -11,6 +13,7 @@ import {
 } from "./style.ts";
 
 function About() {
+    const theme = useTheme();
   const [activeSection, setActiveSection] = useState("introduction");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
   const [selectedLink, setSelectedLink] = useState("introduction");
@@ -29,7 +32,7 @@ function About() {
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer theme={theme}>
       <Title>Me, Myself, And I</Title>
       <SubTitle>Learn More About Me</SubTitle>
       <StyledRow>
@@ -67,7 +70,7 @@ function About() {
               <h4>{`${formatNumber(Object.keys(sections).indexOf(key) + 1)} ${
                 sections[key].title
               }`}</h4>
-              <Description>{sections[key].description}</Description>
+              <Description theme={theme}>{sections[key].description}</Description>
             </div>
           ))}
         </StyledCol>
