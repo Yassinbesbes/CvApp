@@ -12,8 +12,8 @@ export const StyledRow = styled.div<{ reverse?: boolean }>`
   flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
 
   @media (max-width: 768px) {
-    flex-direction: column; /* Stack columns vertically on mobile */
-    align-items: center; /* Center content alignment */
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -26,25 +26,25 @@ export const Image = styled.img`
   width: 400px;
   height: 300px;
   border-radius: 25px;
-  object-fit: cover; /* Ensure the image covers the area without stretching */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
-    width: 100%; /* Full width on mobile */
-    height: auto; /* Adjust height based on aspect ratio */
+    width: 100%;
+    height: auto;
   }
 `;
 
 export const Description = styled.p`
   text-align: justify;
   margin-bottom: 20px;
-  color: #535353;
+  color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
 `;
 
 export const Title = styled.h1`
@@ -68,14 +68,14 @@ export const ProjectTitle = styled.h3`
 export const SubTitle = styled.h6`
   text-align: center;
   margin-bottom: 50px;
+  color: ${({ theme }) => theme.palette.text.secondary};
 `;
 
 export const TechList = styled.ul`
-  list-style-type: none; /* Remove default bullets */
-  padding: 0; /* Remove default padding */
+  list-style-type: none;
+  padding: 0;
   margin: 0;
   gap: 10px;
-
 `;
 
 export const TechListItem = styled.li`
@@ -83,7 +83,7 @@ export const TechListItem = styled.li`
   margin: 0;
   padding: 5px;
   font-size: 0.9rem;
-  color: #333;
+  color: ${({ theme }) => theme.palette.text.secondary};
   font-weight: 600;
   border: none;
 `;

@@ -15,8 +15,10 @@ import {
   StyledColContent,
 } from "./style.ts";
 import { DescripImg } from "../../images/images.js";
+import { useTheme } from "@mui/material/styles";
 
 function Description() {
+  const theme = useTheme();
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
@@ -28,12 +30,12 @@ function Description() {
 
   return (
     <>
-      <StyledContainer>
+      <StyledContainer theme ={theme}>
         <StyledRow>
           <StyledCol className="links-section">
-            <Title>{sections.title}</Title>
+            <Title theme={theme} >{sections.title}</Title>
             <SubTitle>{sections.subtitle}</SubTitle>
-            <Descrip>{sections.description}</Descrip>
+            <Descrip theme={theme} >{sections.description}</Descrip>
             <div style={{ display: "flex", gap: "10px" }}>
               <Button>View My Work</Button>
               <CVButton onClick={() => setShowPopup(true)}>cv</CVButton>

@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { footer } from "../../data/footer.js";
-
+import { useTheme } from "@mui/material/styles";
 import {
   StyledContainer,
   StyledRow,
@@ -23,16 +23,17 @@ import {
 } from "./style.ts";
 
 function Footer() {
+  const theme = useTheme();
   const { about, links, contactInfo, newsletter } = footer;
 
   return (
-    <StyledContainer>
-      <FooterSection>
+    <StyledContainer theme={theme}>
+      <FooterSection theme={theme}>
         <StyledRow>
-          <StyledCol>
+          <StyledCol theme={theme}>
             <h4>{about.title}</h4>
             <p>{about.description}</p>
-            <SocialIcons>
+            <SocialIcons theme={theme}>
               <a
                 href={about.socials.linkedin}
                 target="_blank"
@@ -64,9 +65,9 @@ function Footer() {
             </SocialIcons>
           </StyledCol>
 
-          <StyledCol>
+          <StyledCol theme={theme}>
             <h4>{links.title}</h4>
-            <LinkList>
+            <LinkList theme={theme}>
               {links.items.map((item) => (
                 <li key={item.href}>
                   <a href={item.href}>{item.label}</a>
@@ -75,9 +76,9 @@ function Footer() {
             </LinkList>
           </StyledCol>
 
-          <StyledCol>
+          <StyledCol theme={theme}>
             <h4>{contactInfo.title}</h4>
-            <LinkList>
+            <LinkList theme={theme}>
               {contactInfo.items.map((item) => (
                 <li key={item.href}>
                   <a href={item.href}>{item.label}</a>
@@ -86,12 +87,15 @@ function Footer() {
             </LinkList>
           </StyledCol>
 
-          <StyledCol>
+          <StyledCol theme={theme}>
             <h4>{newsletter.title}</h4>
             <p>{newsletter.subtitle}</p>
-            <NewsletterBox>
-              <NewsletterInput placeholder={newsletter.placeholder} />
-              <NewsletterButton>
+            <NewsletterBox theme={theme}>
+              <NewsletterInput 
+                theme={theme}
+                placeholder={newsletter.placeholder} 
+              />
+              <NewsletterButton theme={theme}>
                 <FontAwesomeIcon icon={faPaperPlane} />
               </NewsletterButton>
             </NewsletterBox>
@@ -99,7 +103,7 @@ function Footer() {
         </StyledRow>
       </FooterSection>
 
-      <Copyright>
+      <Copyright theme={theme}>
         <p>© {new Date().getFullYear()} All rights reserved.</p>
       </Copyright>
     </StyledContainer>

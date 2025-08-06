@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { testimonialData } from "../../data/my-testimonials.js";
+import { useTheme } from "@mui/material/styles";
 import {
   StyledContainer,
   StyledRow,
@@ -21,18 +22,18 @@ import {
 } from "./style.ts";
 
 function MyTestimonials() {
+  const theme = useTheme();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const rowRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const sections = testimonialData;
 
-
-  const handleRadioChange = (index) => {
+  const handleRadioChange = (index: number) => {
     setSelectedIndex(index);
     scrollToCard(index);
   };
 
-  const scrollToCard = (index) => {
+  const scrollToCard = (index: number) => {
     const card = cardRefs.current[index];
     const container = rowRef.current;
     if (card && container) {
@@ -41,7 +42,7 @@ function MyTestimonials() {
     }
   };
 
-  const handleNavigation = (direction) => {
+  const handleNavigation = (direction: 'prev' | 'next') => {
     const totalItems = sections.length;
     const newIndex =
       direction === "prev"
@@ -52,7 +53,7 @@ function MyTestimonials() {
     scrollToCard(newIndex);
   };
 
-  const handleCardClick = (index) => {
+  const handleCardClick = (index: number) => {
     setSelectedIndex(index);
     scrollToCard(index);
   };
@@ -62,10 +63,10 @@ function MyTestimonials() {
   }, [selectedIndex]);
 
   return (
-    <StyledContainer>
+    <StyledContainer theme={theme}>
       <Title>My Testimonials</Title>
       <Letter>T</Letter>
-      <SubTitle>I'm happy that you like my work and wish to share the feedback</SubTitle>
+      <SubTitle theme={theme}>I'm happy that you like my work and wish to share the feedback</SubTitle>
 
       <CarouselWrapper>
         <NavigationButton direction="prev" onClick={() => handleNavigation("prev")}>
@@ -78,12 +79,12 @@ function MyTestimonials() {
               <Card
                 isSelected={selectedIndex === index}
                 onClick={() => handleCardClick(index)}
-                style={{ cursor: "pointer" }}
+                theme={theme}
               >
-                <Description>{section.description}</Description>
+                <Description theme={theme}>{section.description}</Description>
                 <CustomerInfo>
-                  <CustomerName>{section.Name}</CustomerName>
-                  <CustomerPosition>{section.Position}</CustomerPosition>
+                  <CustomerName theme={theme}>{section.Name}</CustomerName>
+                  <CustomerPosition theme={theme}>{section.Position}</CustomerPosition>
                 </CustomerInfo>
               </Card>
             </StyledCol>
