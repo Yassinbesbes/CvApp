@@ -30,12 +30,12 @@ function Description() {
 
   return (
     <>
-      <StyledContainer theme ={theme}>
+      <StyledContainer theme={theme}>
         <StyledRow>
           <StyledCol className="links-section">
-            <Title theme={theme} >{sections.title}</Title>
+            <Title theme={theme}>{sections.title}</Title>
             <SubTitle>{sections.subtitle}</SubTitle>
-            <Descrip theme={theme} >{sections.description}</Descrip>
+            <Descrip theme={theme}>{sections.description}</Descrip>
             <div style={{ display: "flex", gap: "10px" }}>
               <Button>View My Work</Button>
               <CVButton onClick={() => setShowPopup(true)}>cv</CVButton>
@@ -59,7 +59,7 @@ function Description() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.5)",
+            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.5)',
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -68,11 +68,13 @@ function Description() {
         >
           <div
             style={{
-              backgroundColor: "white",
+              backgroundColor: theme.palette.background.paper,
               padding: "2rem",
               borderRadius: "10px",
               maxWidth: "400px",
               textAlign: "center",
+              color: theme.palette.text.primary,
+              boxShadow: theme.shadows[10],
             }}
           >
             <h3>{sections.buttons.downloadConfirmTitle}</h3>
@@ -91,7 +93,7 @@ function Description() {
                 onClick={() => setShowPopup(false)}
                 style={{
                   padding: "10px 20px",
-                  backgroundColor: "#426bc4",
+                  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.main : '#426bc4',
                   color: "white",
                   border: "none",
                   borderRadius: "5px",
@@ -105,8 +107,8 @@ function Description() {
                 onClick={() => setShowPopup(false)}
                 style={{
                   padding: "10px 20px",
-                  backgroundColor: "#f0f0f0",
-                  color: "#333",
+                  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#f0f0f0',
+                  color: theme.palette.mode === 'dark' ? theme.palette.text.primary : '#333',
                   border: "none",
                   borderRadius: "5px",
                   cursor: "pointer",

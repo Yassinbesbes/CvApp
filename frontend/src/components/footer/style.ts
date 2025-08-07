@@ -51,7 +51,8 @@ export const StyledCol = styled.div<ThemeProps>`
   h4 {
     margin-bottom: 15px;
     font-size: 20px;
-    color: ${({ theme }) => theme.palette.text.primary};
+    color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
+
   }
 
   p {

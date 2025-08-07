@@ -33,18 +33,6 @@ export const StyledCol = styled.div`
     margin-bottom: 10px;
   }
 
-  &.links-section ul li a {
-    text-decoration: none;
-    color: #b3b3b3;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s;
-  }
-
-  &.links-section ul li a.active {
-  color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
-  }
-
   &.content-section {
     flex: 1;
     @media screen and (max-width: 767px) {
@@ -75,7 +63,7 @@ export const Description = styled.p`
   text-align: justify;
   margin-bottom: 20px;
   color: ${({ theme }) =>
-  theme.palette.mode === "dark" ? theme.palette.text.primary : "#000000"};
+    theme.palette.mode === "dark" ? theme.palette.text.primary : "#000000"};
 `;
 
 export const SubTitle = styled.h6`

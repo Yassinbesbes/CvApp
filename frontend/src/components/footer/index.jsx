@@ -91,9 +91,9 @@ function Footer() {
             <h4>{newsletter.title}</h4>
             <p>{newsletter.subtitle}</p>
             <NewsletterBox theme={theme}>
-              <NewsletterInput 
+              <NewsletterInput
                 theme={theme}
-                placeholder={newsletter.placeholder} 
+                placeholder={newsletter.placeholder}
               />
               <NewsletterButton theme={theme}>
                 <FontAwesomeIcon icon={faPaperPlane} />

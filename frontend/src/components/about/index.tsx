@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { sections } from "../../data/about.js";
 import { useTheme } from "@mui/material/styles";
+import { styled } from "@mui/system";
 
 import {
   StyledContainer,
@@ -12,8 +13,20 @@ import {
   Letter,
 } from "./style.ts";
 
+const ActiveLink = styled("a")(({ theme, active }) => ({
+  textDecoration: "none",
+  color: active
+    ? theme.palette.mode === "dark"
+      ? "#6c6eb3"
+      : "#000000"
+    : "#b3b3b3",
+  cursor: "pointer",
+  fontWeight: active ? 700 : 600,
+  transition: "color 0.3s ease",
+}));
+
 function About() {
-    const theme = useTheme();
+  const theme = useTheme();
   const [activeSection, setActiveSection] = useState("introduction");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
   const [selectedLink, setSelectedLink] = useState("introduction");
@@ -42,18 +55,18 @@ function About() {
             <ul>
               {Object.keys(sections).map((key, index) => (
                 <li key={key}>
-                  <a
+                  <ActiveLink
                     href={`/${key}`}
                     onClick={(e) => {
                       e.preventDefault();
                       setActiveSection(key);
                       setSelectedLink(key);
                     }}
-                    className={selectedLink === key ? "active" : ""}
+                    active={selectedLink === key}
                     data-index={formatNumber(index + 1)}
                   >
                     {`${formatNumber(index + 1)} ${sections[key].title}`}
-                  </a>
+                  </ActiveLink>
                 </li>
               ))}
             </ul>
@@ -70,7 +83,9 @@ function About() {
               <h4>{`${formatNumber(Object.keys(sections).indexOf(key) + 1)} ${
                 sections[key].title
               }`}</h4>
-              <Description theme={theme}>{sections[key].description}</Description>
+              <Description theme={theme}>
+                {sections[key].description}
+              </Description>
             </div>
           ))}
         </StyledCol>

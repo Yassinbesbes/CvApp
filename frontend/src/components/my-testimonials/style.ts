@@ -21,7 +21,7 @@ interface CardProps {
 }
 
 interface DirectionProps {
-  direction?: 'prev' | 'next';
+  direction?: "prev" | "next";
 }
 
 export const StyledContainer = styled.div<ThemeProps>`
@@ -88,12 +88,14 @@ export const Card = styled.div<CardProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 2px solid ${({ isSelected }) => isSelected ? '#9381ff' : 'transparent'};
-  transform: ${({ isSelected }) => isSelected ? 'scale(1.02)' : 'scale(1)'};
+  border: 2px solid
+    ${({ isSelected }) => (isSelected ? "#9381ff" : "transparent")};
+  transform: ${({ isSelected }) => (isSelected ? "scale(1.02)" : "scale(1)")};
   cursor: pointer;
 
   &:hover {
-    transform: translateY(-5px) ${({ isSelected }) => isSelected ? 'scale(1.02)' : ''};
+    transform: translateY(-5px)
+      ${({ isSelected }) => (isSelected ? "scale(1.02)" : "")};
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
@@ -107,7 +109,7 @@ export const Card = styled.div<CardProps>`
 export const Description = styled.p<ThemeProps>`
   text-align: justify;
   margin-bottom: 20px;
-  color: ${({ theme }) => theme.palette.text.secondary};
+    color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
   flex-grow: 1;
 `;
 
@@ -139,7 +141,8 @@ export const SubTitle = styled.h6<ThemeProps>`
 
 export const CustomerPosition = styled.h5<ThemeProps>`
   text-align: center;
-  color: ${({ theme }) => theme.palette.text.secondary};
+  font-weight: 500;
+    color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
   margin: 0;
 `;
 
@@ -215,12 +218,12 @@ export const NavigationButton = styled.button<DirectionProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   z-index: 1;
-  ${props => props.direction === 'prev' ? 'left: -20px;' : 'right: -20px;'}
+  ${(props) => (props.direction === "prev" ? "left: -20px;" : "right: -20px;")}
   transition: all 0.2s ease;
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -233,7 +236,8 @@ export const NavigationButton = styled.button<DirectionProps>`
   @media (max-width: 768px) {
     width: 30px;
     height: 30px;
-    ${props => props.direction === 'prev' ? 'left: -10px;' : 'right: -10px;'}
+    ${(props) =>
+      props.direction === "prev" ? "left: -10px;" : "right: -10px;"}
   }
 `;
 
@@ -243,5 +247,6 @@ export const ArrowIcon = styled.span<DirectionProps>`
   height: 10px;
   border-top: 2px solid #9381ff;
   border-right: 2px solid #9381ff;
-  transform: ${props => props.direction === 'prev' ? 'rotate(-135deg)' : 'rotate(45deg)'};
+  transform: ${(props) =>
+    props.direction === "prev" ? "rotate(-135deg)" : "rotate(45deg)"};
 `;
