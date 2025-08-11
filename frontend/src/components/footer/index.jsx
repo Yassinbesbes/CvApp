@@ -5,6 +5,7 @@ import {
   faLinkedin,
   faGithub,
   faFigma,
+  faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { footer } from "../../data/footer.js";
@@ -61,6 +62,13 @@ function Footer() {
                 rel="noopener noreferrer"
               >
                 <FontAwesomeIcon icon={faFigma} />
+              </a>
+              <a
+                href={about.socials.stackoverflow}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faStackOverflow} />
               </a>
             </SocialIcons>
           </StyledCol>
