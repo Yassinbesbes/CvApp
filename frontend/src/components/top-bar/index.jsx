@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -19,6 +19,7 @@ import {
   MobileThemeButton,
 } from "./style.ts";
 import styled from "styled-components";
+import { useTranslation } from 'react-i18next';
 
 const LanguageSelect = styled.select`
   padding: 6px 12px;
@@ -39,18 +40,24 @@ const LanguageSelect = styled.select`
   }
 `;
 
+const RTLTextWrapper = styled.span`
+  direction: ${({ $isRTL }) => ($isRTL ? 'rtl' : 'ltr')};
+  display: inline-block;
+`;
+
 const Topbar = () => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
-  const [language, setLanguage] = useState("en");
+  const { t, i18n } = useTranslation();
 
   const toggleTheme = () => {
     colorMode.toggleColorMode();
   };
 
   const handleLanguageChange = (lang) => {
-    setLanguage(lang);
-    // Trigger translation update here if using i18n
+    i18n.changeLanguage(lang);
+    // Remove document direction change to prevent layout flipping
+    document.documentElement.lang = lang; // Only set language, not direction
   };
 
   return (
@@ -74,37 +81,41 @@ const Topbar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={StyledScrollLink} to="about" smooth duration={500}>
-                About
+                <RTLTextWrapper $isRTL={i18n.language === 'ar'}>
+                  {t('about')}
+                </RTLTextWrapper>
               </Nav.Link>
               <Nav.Link as={StyledScrollLink} to="myskills" smooth duration={500}>
-                My Skills
+                <RTLTextWrapper $isRTL={i18n.language === 'ar'}>
+                  {t('skills')}
+                </RTLTextWrapper>
               </Nav.Link>
               <Nav.Link as={StyledScrollLink} to="work" smooth duration={500}>
-                Work
+                <RTLTextWrapper $isRTL={i18n.language === 'ar'}>
+                  {t('work')}
+                </RTLTextWrapper>
               </Nav.Link>
               <Nav.Link as={StyledScrollLink} to="footer" smooth duration={500}>
-                Contact
+                <RTLTextWrapper $isRTL={i18n.language === 'ar'}>
+                  {t('contact')}
+                </RTLTextWrapper>
               </Nav.Link>
             </Nav>
             <LeftButtons style={{ alignItems: "center" }}>
-              
-              {/* Theme Button */}
               <ThemeButton onClick={toggleTheme}>
                 <FontAwesomeIcon
                   icon={theme.palette.mode === "dark" ? faSun : faMoon}
                 />
               </ThemeButton>
 
-              {/* Language Selector */}
               <LanguageSelect
-                value={language}
+                value={i18n.language}
                 onChange={(e) => handleLanguageChange(e.target.value)}
               >
                 <option value="en">🇺🇸 English</option>
                 <option value="ar">🇸🇦 العربية</option>
               </LanguageSelect>
 
-              {/* Upwork Button */}
               <Button
                 as="a"
                 href="https://www.upwork.com/freelancers/~011b93e92e07313cf4?viewMode=1"
@@ -112,7 +123,9 @@ const Topbar = () => {
                 rel="noopener noreferrer"
                 style={{ textDecoration: "none" }}
               >
-                My Upwork
+                <RTLTextWrapper $isRTL={i18n.language === 'ar'}>
+                  {t('upwork')}
+                </RTLTextWrapper>
               </Button>
             </LeftButtons>
           </Navbar.Collapse>
