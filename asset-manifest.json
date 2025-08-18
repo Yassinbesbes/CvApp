@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CvApp/static/css/main.b3cb5bb2.css",
-    "main.js": "/CvApp/static/js/main.58eaf277.js",
+    "main.js": "/CvApp/static/js/main.36c34f00.js",
     "static/media/DonationApp.png": "/CvApp/static/media/DonationApp.b9075f18752da814feef.png",
     "static/media/Dashboard.png": "/CvApp/static/media/Dashboard.af4f4809e62153c1eb11.png",
     "static/media/DescripImg.png": "/CvApp/static/media/DescripImg.fb724aa694d96ba8456f.png",
@@ -13,16 +13,15 @@
     "static/media/SpeedConnection.png": "/CvApp/static/media/SpeedConnection.d5006ca11dd88ed5e3e5.png",
     "static/media/DigiGrowing.png": "/CvApp/static/media/DigiGrowing.72e2aec066535c50c700.png",
     "static/media/UIB.png": "/CvApp/static/media/UIB.33323e2f3c82e6c5b33b.png",
-    "static/media/twitter.png": "/CvApp/static/media/twitter.e4f83bef4191a65e9c7d.png",
-    "static/media/github.png": "/CvApp/static/media/github.44eee0c4a6c25b0d7347.png",
-    "static/media/figma.png": "/CvApp/static/media/figma.72fbc535ebe253a5dbc4.png",
-    "static/media/linkedIn.png": "/CvApp/static/media/linkedIn.f249b38224ca41a0b909.png",
+    "static/media/UK.svg": "/CvApp/static/media/UK.1ff8dcad26ff39f14dda2c61b809e97e.svg",
+    "static/media/TN.svg": "/CvApp/static/media/TN.02fafdcbac0712e6dbc772b637d17c4f.svg",
     "index.html": "/CvApp/index.html",
+    "static/media/FR.svg": "/CvApp/static/media/FR.43cc76eeed300a2e291a46534fb55df8.svg",
     "main.b3cb5bb2.css.map": "/CvApp/static/css/main.b3cb5bb2.css.map",
-    "main.58eaf277.js.map": "/CvApp/static/js/main.58eaf277.js.map"
+    "main.36c34f00.js.map": "/CvApp/static/js/main.36c34f00.js.map"
   },
   "entrypoints": [
     "static/css/main.b3cb5bb2.css",
-    "static/js/main.58eaf277.js"
+    "static/js/main.36c34f00.js"
   ]
 }
