@@ -109,7 +109,8 @@ export const Card = styled.div<CardProps>`
 export const Description = styled.p<ThemeProps>`
   text-align: justify;
   margin-bottom: 20px;
-    color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
+  color: ${({ theme }) =>
+    theme.palette.mode === "dark" ? theme.palette.text.primary : "#000000"};
   flex-grow: 1;
 `;
 
@@ -142,7 +143,8 @@ export const SubTitle = styled.h6<ThemeProps>`
 export const CustomerPosition = styled.h5<ThemeProps>`
   text-align: center;
   font-weight: 500;
-    color: ${({ theme }) => theme.palette.mode === 'dark' ? theme.palette.text.primary : '#000000'};
+  color: ${({ theme }) =>
+    theme.palette.mode === "dark" ? theme.palette.text.primary : "#000000"};
   margin: 0;
 `;
 

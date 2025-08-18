@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { sections } from "../../data/description.js";
 import {
   StyledContainer,
   StyledRow,
@@ -13,12 +12,20 @@ import {
   Letter,
   StyledImage,
   StyledColContent,
+  PopupOverlay,
+  PopupContent,
+  PopupButtonsWrapper,
+  DownloadLink,
+  CancelButton,
+  RTLTextWrapper
 } from "./style.ts";
 import { DescripImg } from "../../images/images.js";
 import { useTheme } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
 
 function Description() {
   const theme = useTheme();
+  const { t, i18n } = useTranslation();
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
@@ -33,12 +40,30 @@ function Description() {
       <StyledContainer theme={theme}>
         <StyledRow>
           <StyledCol className="links-section">
-            <Title theme={theme}>{sections.title}</Title>
-            <SubTitle>{sections.subtitle}</SubTitle>
-            <Descrip theme={theme}>{sections.description}</Descrip>
+            <Title theme={theme}>
+              <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                {t("description_title")}
+              </RTLTextWrapper>
+            </Title>
+            <SubTitle>
+              <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                {t("description_subtitle")}
+              </RTLTextWrapper>
+            </SubTitle>
+            <Descrip theme={theme}>
+              <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                {t("description_description")}
+              </RTLTextWrapper>
+            </Descrip>
             <div style={{ display: "flex", gap: "10px" }}>
-              <Button>View My Work</Button>
-              <CVButton onClick={() => setShowPopup(true)}>cv</CVButton>
+              <Button>
+                <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                  {t("view_work")}
+                </RTLTextWrapper>
+              </Button>
+              <CVButton onClick={() => setShowPopup(true)}>
+                {t("cv_button")}
+              </CVButton>
             </div>
           </StyledCol>
 
@@ -50,75 +75,41 @@ function Description() {
           </StyledColContent>
         </StyledRow>
       </StyledContainer>
-
       {showPopup && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.5)',
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: theme.palette.background.paper,
-              padding: "2rem",
-              borderRadius: "10px",
-              maxWidth: "400px",
-              textAlign: "center",
-              color: theme.palette.text.primary,
-              boxShadow: theme.shadows[10],
-            }}
-          >
-            <h3>{sections.buttons.downloadConfirmTitle}</h3>
-            <p>{sections.buttons.downloadConfirmMessage}</p>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "1rem",
-                marginTop: "1rem",
-              }}
-            >
-              <a
+        <PopupOverlay theme={theme}>
+          <PopupContent theme={theme}>
+            <h3>
+              <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                {t("download_cv_title")}
+              </RTLTextWrapper>
+            </h3>
+            <p>
+              <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                {t("download_cv_message")}
+              </RTLTextWrapper>
+            </p>
+            <PopupButtonsWrapper>
+              <DownloadLink
                 href="/YassinBesbes_CV.pdf"
                 download="YassinBesbes_CV.pdf"
                 onClick={() => setShowPopup(false)}
-                style={{
-                  padding: "10px 20px",
-                  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.main : '#426bc4',
-                  color: "white",
-                  border: "none",
-                  borderRadius: "5px",
-                  textDecoration: "none",
-                  cursor: "pointer",
-                }}
+                theme={theme}
               >
-                {sections.buttons.yesDownload}
-              </a>
-              <button
+                <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                  {t("yes_download")}
+                </RTLTextWrapper>
+              </DownloadLink>
+              <CancelButton 
                 onClick={() => setShowPopup(false)}
-                style={{
-                  padding: "10px 20px",
-                  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#f0f0f0',
-                  color: theme.palette.mode === 'dark' ? theme.palette.text.primary : '#333',
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                }}
+                theme={theme}
               >
-                {sections.buttons.cancel}
-              </button>
-            </div>
-          </div>
-        </div>
+                <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                  {t("cancel")}
+                </RTLTextWrapper>
+              </CancelButton>
+            </PopupButtonsWrapper>
+          </PopupContent>
+        </PopupOverlay>
       )}
     </>
   );

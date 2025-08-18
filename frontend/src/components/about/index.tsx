@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { sections } from "../../data/about.js";
 import { useTheme } from "@mui/material/styles";
 import { styled } from "@mui/system";
-
+import { useTranslation } from "react-i18next";
 import {
   StyledContainer,
   StyledRow,
@@ -13,7 +12,9 @@ import {
   Letter,
 } from "./style.ts";
 
-const ActiveLink = styled("a")(({ theme, active }) => ({
+const ActiveLink = styled("a", {
+  shouldForwardProp: (prop) => prop !== "active",
+})<{ active: boolean }>(({ theme, active }) => ({
   textDecoration: "none",
   color: active
     ? theme.palette.mode === "dark"
@@ -25,35 +26,39 @@ const ActiveLink = styled("a")(({ theme, active }) => ({
   transition: "color 0.3s ease",
 }));
 
+const RTLTextWrapper = styled("span")<{ $isRTL: boolean }>(({ $isRTL }) => ({
+  direction: $isRTL ? "rtl" : "ltr",
+  display: "inline-block",
+}));
+
+// Define the section keys in one place (to sync EN/AR)
+const sectionKeys = ["introduction", "skills", "history", "aspirations"];
+
 function About() {
   const theme = useTheme();
+  const { t, i18n } = useTranslation();
   const [activeSection, setActiveSection] = useState("introduction");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
   const [selectedLink, setSelectedLink] = useState("introduction");
 
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 767);
-  };
-
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 767);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const formatNumber = (num) => {
-    return num.toString().padStart(2, "0");
-  };
+  const formatNumber = (num: number) => num.toString().padStart(2, "0");
 
   return (
-    <StyledContainer theme={theme}>
-      <Title>Me, Myself, And I</Title>
-      <SubTitle>Learn More About Me</SubTitle>
+    <StyledContainer>
+      <Title>{t("about_title")}</Title>
+      <SubTitle>{t("about_subtitle")}</SubTitle>
       <StyledRow>
         <Letter>M</Letter>
         {!isMobile && (
           <StyledCol size={5} className="links-section">
             <ul>
-              {Object.keys(sections).map((key, index) => (
+              {sectionKeys.map((key, index) => (
                 <li key={key}>
                   <ActiveLink
                     href={`/${key}`}
@@ -65,7 +70,7 @@ function About() {
                     active={selectedLink === key}
                     data-index={formatNumber(index + 1)}
                   >
-                    {`${formatNumber(index + 1)} ${sections[key].title}`}
+                    {`${formatNumber(index + 1)} ${t(`about_${key}_title`)}`}
                   </ActiveLink>
                 </li>
               ))}
@@ -73,18 +78,22 @@ function About() {
           </StyledCol>
         )}
         <StyledCol size={9} className="content-section">
-          {Object.keys(sections).map((key) => (
+          {sectionKeys.map((key, index) => (
             <div
               key={key}
               style={{
                 display: isMobile || activeSection === key ? "block" : "none",
               }}
             >
-              <h4>{`${formatNumber(Object.keys(sections).indexOf(key) + 1)} ${
-                sections[key].title
-              }`}</h4>
+              <h4>
+                <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                  {`${formatNumber(index + 1)} ${t(`about_${key}_title`)}`}
+                </RTLTextWrapper>
+              </h4>
               <Description theme={theme}>
-                {sections[key].description}
+                <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                  {t(`about_${key}_description`)}
+                </RTLTextWrapper>
               </Description>
             </div>
           ))}

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { testimonialData } from "../../data/my-testimonials.js";
 import { useTheme } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
 import {
   StyledContainer,
   StyledRow,
@@ -23,10 +23,10 @@ import {
 
 function MyTestimonials() {
   const theme = useTheme();
+  const { t} = useTranslation();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const rowRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const sections = testimonialData;
 
   const handleRadioChange = (index: number) => {
     setSelectedIndex(index);
@@ -43,7 +43,7 @@ function MyTestimonials() {
   };
 
   const handleNavigation = (direction: 'prev' | 'next') => {
-    const totalItems = sections.length;
+    const totalItems = 4; // Number of testimonials
     const newIndex =
       direction === "prev"
         ? (selectedIndex - 1 + totalItems) % totalItems
@@ -64,9 +64,9 @@ function MyTestimonials() {
 
   return (
     <StyledContainer theme={theme}>
-      <Title>My Testimonials</Title>
+      <Title>{t("testimonials.title")}</Title>
       <Letter>T</Letter>
-      <SubTitle theme={theme}>I'm happy that you like my work and wish to share the feedback</SubTitle>
+      <SubTitle theme={theme}>{t("testimonials.subtitle")}</SubTitle>
 
       <CarouselWrapper>
         <NavigationButton direction="prev" onClick={() => handleNavigation("prev")}>
@@ -74,17 +74,23 @@ function MyTestimonials() {
         </NavigationButton>
 
         <StyledRow ref={rowRef}>
-          {sections.map((section, index) => (
+          {[1, 2, 3, 4].map((testimonialNum, index) => (
             <StyledCol key={index} ref={(el) => (cardRefs.current[index] = el)}>
               <Card
                 isSelected={selectedIndex === index}
                 onClick={() => handleCardClick(index)}
                 theme={theme}
               >
-                <Description theme={theme}>{section.description}</Description>
+                <Description theme={theme}>
+                  {t(`testimonials.testimonial${testimonialNum}.description`)}
+                </Description>
                 <CustomerInfo>
-                  <CustomerName theme={theme}>{section.Name}</CustomerName>
-                  <CustomerPosition theme={theme}>{section.Position}</CustomerPosition>
+                  <CustomerName theme={theme}>
+                    {t(`testimonials.testimonial${testimonialNum}.name`)}
+                  </CustomerName>
+                  <CustomerPosition theme={theme}>
+                    {t(`testimonials.testimonial${testimonialNum}.position`)}
+                  </CustomerPosition>
                 </CustomerInfo>
               </Card>
             </StyledCol>
@@ -97,7 +103,7 @@ function MyTestimonials() {
       </CarouselWrapper>
 
       <RadioContainer>
-        {sections.map((_, index) => (
+        {[1, 2, 3, 4].map((_, index) => (
           <RadioLabel key={index}>
             <RadioButton
               type="radio"
