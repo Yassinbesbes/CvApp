@@ -1,7 +1,8 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { DescripImg, SeekMake, TT, UIB, DG } from "../../images/images.js";
-import { footer } from "../../data/footer.js";
 import {
   StyledContainer,
   StyledRow,
@@ -19,18 +20,35 @@ import {
   CompanyLogo,
 } from "./style.ts";
 
+const RTLTextWrapper = styled.span`
+  direction: ${({ $isRTL }: { $isRTL: boolean }) => ($isRTL ? "rtl" : "ltr")};
+  display: inline-block;
+`;
+
 function Contact() {
   const theme = useTheme();
-  const { contact } = footer;
+  const { t, i18n } = useTranslation();
 
   return (
     <StyledContainer theme={theme}>
       <StyledRow>
         <StyledCol className="links-section" theme={theme}>
-          <Title theme={theme}>{contact.title}</Title>
-          <SubTitle theme={theme}>{contact.subtitle}</SubTitle>
+          <Title theme={theme}>
+            <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+              {t("contact_title")}
+            </RTLTextWrapper>
+          </Title>
+          <SubTitle theme={theme}>
+            <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+              {t("contact_subtitle")}
+            </RTLTextWrapper>
+          </SubTitle>
           <CircleContact>
-            <CircleTitle>{contact.button}</CircleTitle>
+            <CircleTitle>
+              <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+                {t("contact_button")}
+              </RTLTextWrapper>
+            </CircleTitle>
           </CircleContact>
         </StyledCol>
 
@@ -42,7 +60,11 @@ function Contact() {
       </StyledRow>
 
       <CompaniesSection theme={theme}>
-        <CompaniesTitle theme={theme}>Companies Part Of</CompaniesTitle>
+        <CompaniesTitle theme={theme}>
+          <RTLTextWrapper $isRTL={i18n.language === "ar"}>
+            {t("companies_part_of")}
+          </RTLTextWrapper>
+        </CompaniesTitle>
         <CompaniesWrapper>
           <CompanyLogo
             src={TT}

@@ -187,3 +187,6 @@ export const CompanyLogo = styled.img<ThemeProps>`
     opacity: 1;
   }
 `;
+
+
+

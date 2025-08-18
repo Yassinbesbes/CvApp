@@ -6,6 +6,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 // Import translations
 import translationEN from "./data/en/translation.json";
 import translationAR from "./data/ar/translation.json";
+import translationFR from "./data/fr/translation.json";
 
 i18n
   .use(LanguageDetector)
@@ -14,6 +15,7 @@ i18n
     resources: {
       en: { translation: translationEN },
       ar: { translation: translationAR },
+      fr: { translation: translationFR },
     },
     fallbackLng: "en",
     interpolation: { escapeValue: false },
@@ -22,7 +24,6 @@ i18n
       caches: ["localStorage"],
     },
   });
-
 
 i18n.on("languageChanged", (lng) => {
   document.documentElement.lang = lng;
