@@ -1,10 +1,36 @@
+
 # [cv-site](https://yassinbesbes.github.io/CvApp/)
+
 **Project Title:** Personal Portfolio Website
 
-**Description:**
-Crafted with HTML and CSS, my portfolio showcases my skills, projects, and CV, offering a glimpse into my professional journey.
 
-<h1 style="background-color: #ADADADFF; padding: 10px;">How to Download and Run My Project</h1>
+## Description
+A responsive and modern personal portfolio built with **React, TypeScript, styled-components, Material-UI (MUI)**, and **i18next** for multilingual support.  
+It showcases skills, projects, and CV, offering a glimpse into the professional journey of the developer.
+
+---
+
+## 🚀 Tech Stack
+
+- **React** – Frontend library for building UI  
+- **TypeScript** – Strongly typed JavaScript for better maintainability  
+- **styled-components** – CSS-in-JS styling for modular design  
+- **Material-UI (MUI)** – Component library for consistent UI  
+- **i18next** – Internationalization for multi-language support  
+
+---
+
+## ✨ Features
+
+- 🌙 **Dark/Light mode**  
+- 🌍 **Multi-language support** (including RTL for Arabic)  
+- 📱 **Responsive design** for all devices  
+- 🎨 **Custom styled-components** for consistent branding  
+- ⚡ **Optimized performance** with React and TypeScript  
+
+---
+
+## 📥 How to Download and Run the Project
 
 1. **Go to GitHub Repository:**
 
@@ -48,4 +74,3 @@ Crafted with HTML and CSS, my portfolio showcases my skills, projects, and CV, o
 8. **Run the Project:**
 
     Depending on the type of project, you may need to install dependencies or configure settings before running it. Refer to any documentation or README files provided in the project for instructions on how to run it.
-
