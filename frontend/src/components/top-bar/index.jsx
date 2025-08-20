@@ -23,6 +23,8 @@ import {
   DropdownMenu,
   DropdownItem,
   RTLTextWrapper,
+  MobileLanguageDropdown,
+  MobileLanguageButton,
 } from "./style.ts";
 import { useTranslation } from "react-i18next";
 
@@ -40,7 +42,9 @@ const Topbar = () => {
   const { t, i18n } = useTranslation();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const mobileDropdownRef = useRef(null);
 
   const languages = [
     { code: "en", label: "En", flag: UK },
@@ -54,12 +58,19 @@ const Topbar = () => {
     i18n.changeLanguage(lang);
     document.documentElement.lang = lang;
     setDropdownOpen(false);
+    setMobileDropdownOpen(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
+      }
+      if (
+        mobileDropdownRef.current &&
+        !mobileDropdownRef.current.contains(event.target)
+      ) {
+        setMobileDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -110,6 +121,29 @@ const Topbar = () => {
             </AnimatePresence>
           </MobileThemeButton>
 
+          {/* Mobile Language Selector */}
+          <MobileLanguageDropdown ref={mobileDropdownRef}>
+            <MobileLanguageButton
+              theme={theme}
+              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+            >
+              <FlagImage src={currentLanguage.flag} alt="flag" />
+            </MobileLanguageButton>
+            <DropdownMenu theme={theme} open={mobileDropdownOpen}>
+              {languages.map((lang) => (
+                <DropdownItem
+                  key={lang.code}
+                  theme={theme}
+                  onClick={() => handleLanguageChange(lang.code)}
+                  $selected={currentLanguage.code === lang.code}
+                >
+                  <FlagImage src={lang.flag} alt="flag" />
+                  {lang.label}
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </MobileLanguageDropdown>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -139,16 +173,14 @@ const Topbar = () => {
                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
                     exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
+                    style={{ fontSize: "22px" }}
                   >
-                    <FontAwesomeIcon
-                      icon={theme.palette.mode === "dark" ? faSun : faMoon}
-                      size="lg"
-                    />
+                    {theme.palette.mode === "dark" ? "🌙" : " ☀️"}
                   </motion.div>
                 </AnimatePresence>
               </ThemeButton>
 
-              {/* Language Selector */}
+              {/* Desktop Language Selector */}
               <LanguageDropdown ref={dropdownRef}>
                 <LanguageButton
                   theme={theme}

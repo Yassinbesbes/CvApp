@@ -27,9 +27,11 @@ interface DirectionProps {
 export const StyledContainer = styled.div<ThemeProps>`
   margin: 0 auto;
   position: relative;
-  max-width: 1200px;
+  max-width: 1400px;
   padding: 0 20px;
   background-color: ${({ theme }) => theme.palette.background.default};
+  overflow-x: hidden;
+  overflow-y: hidden;
 `;
 
 export const CarouselWrapper = styled.div`

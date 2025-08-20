@@ -76,6 +76,10 @@ export const LanguageDropdown = styled.div`
   position: relative;
   display: inline-block;
   cursor: pointer;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
 `;
 
 export const LanguageButton = styled.div`
@@ -99,6 +103,36 @@ export const LanguageButton = styled.div`
   transition: box-shadow 0.3s ease;
 `;
 
+/* Mobile Language Dropdown */
+export const MobileLanguageDropdown = styled.div`
+  display: none;
+  position: relative;
+
+  @media (max-width: 992px) {
+    display: inline-block;
+    margin-right: 15px;
+  }
+`;
+
+export const MobileLanguageButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid
+    ${(props) => (props.theme.palette.mode === "dark" ? "#555" : "#ccc")};
+  background: ${(props) =>
+    props.theme.palette.mode === "dark" ? "#333" : "#fff"};
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
 export const FlagImage = styled.img`
   width: 20px;
   height: 20px;
@@ -110,7 +144,7 @@ export const DropdownMenu = styled.div<{ open: boolean }>`
   display: ${(props) => (props.open ? "block" : "none")};
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   border-radius: 8px;
   background: ${(props) =>
     props.theme.palette.mode === "dark" ? "#333" : "#fff"};
@@ -118,6 +152,12 @@ export const DropdownMenu = styled.div<{ open: boolean }>`
     ${(props) => (props.theme.palette.mode === "dark" ? "#555" : "#ccc")};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  min-width: 100px;
+
+  @media (max-width: 992px) {
+    right: 0;
+    left: auto;
+  }
 `;
 
 export const DropdownItem = styled.div<{ $selected: boolean }>`
